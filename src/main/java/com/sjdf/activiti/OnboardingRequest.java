@@ -73,6 +73,10 @@ public class OnboardingRequest {
             for (int i = 0; i < tasks.size(); i++) {
               Task task = tasks.get(i);
               System.out.println("Processing Task [" + task.getName() + "]");
+              if("enterOnboardingData".equals(task.getTaskDefinitionKey())) {
+                  Map<String, Object> m = task.getTaskLocalVariables();
+                  System.out.println(m.get("state"));
+              }
               Map<String, Object> variables = new HashMap<String, Object>();
               FormData formData = formService.getTaskFormData(task.getId());
               for (FormProperty formProperty : formData.getFormProperties()) {
